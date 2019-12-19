@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  postgres:
+    build:
+      context: postgis
+      dockerfile: Dockerfile
+    image: postgis
+    container_name: postgis
+    environment:
+      - "POSTGRES_DB=postgres"
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=postgres"
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres-network
+    restart: always
+    volumes: 
+      - postgres-data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "postgres@postgres.com"
+      PGADMIN_DEFAULT_PASSWORD: "postgres"
+    ports:
+      - "15432:80"
+    depends_on:
+      - postgres
+    restart: always
+    networks:
+      - postgres-network
+    volumes:
+      - pgadmin4-data:/var/lib/pgadmin
+
+networks: 
+  postgres-network:
+
+volumes: 
+  postgres-data:
+  pgadmin4-data:
