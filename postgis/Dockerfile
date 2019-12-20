@@ -1,4 +1,4 @@
-FROM postgres:11.4
+FROM postgres:12
 
 MAINTAINER saraivaufc <saraiva.ufc@gmail.com>
 
@@ -8,4 +8,4 @@ ENV LANGUAGE en_US:en
 
 ENV LC_ALL en_US.UTF-8 
 
-RUN apt-get update && apt-get install -y postgresql-11-postgis-2.5 postgis
+RUN apt-get update && apt-get install -y postgresql-12-postgis-3 postgis
