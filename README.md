@@ -1,4 +1,4 @@
-# PostgreSQL 12 + Postgis 3 + pgAdmin 4
+# PostgreSQL 14 + Postgis 3 + pgAdmin 4
 
 ### pgAdmin 4
 
